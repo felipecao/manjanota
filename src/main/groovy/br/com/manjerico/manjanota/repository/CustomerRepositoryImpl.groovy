@@ -10,6 +10,7 @@ class CustomerRepositoryImpl implements CustomerRepository {
     static final String CUSTOMERS_WORKSHEET = "Clientes"
 
     static final Map SPREADSHEET_HEADERS = [
+            identificador: "Identificador",
             razaoSocial: "Razão Social",
             cnpj: "CNPJ",
             endereco: "Endereço",
@@ -28,6 +29,7 @@ class CustomerRepositoryImpl implements CustomerRepository {
     List<Customer> findAll() {
         return spreadsheetReader.readWorksheet(CUSTOMERS_WORKSHEET).collect {
             new Customer(
+                    identificador: Double.valueOf(it[SPREADSHEET_HEADERS.identificador]).intValue(),
                     razaoSocial: it[SPREADSHEET_HEADERS.razaoSocial],
                     cnpj: it[SPREADSHEET_HEADERS.cnpj],
                     endereco: it[SPREADSHEET_HEADERS.endereco],

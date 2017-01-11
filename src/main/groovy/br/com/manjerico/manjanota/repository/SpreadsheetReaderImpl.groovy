@@ -26,7 +26,8 @@ class SpreadsheetReaderImpl implements SpreadsheetReader {
                         (headers[1]): row.getCell(1).toString(),
                         (headers[2]): row.getCell(2).toString(),
                         (headers[3]): row.getCell(3).toString(),
-                        (headers[4]): row.getCell(4).toString()
+                        (headers[4]): row.getCell(4).toString(),
+                        (headers[5]): row.getCell(5).toString()
                 ]
             }
         }

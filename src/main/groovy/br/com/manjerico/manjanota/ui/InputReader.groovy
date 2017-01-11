@@ -32,7 +32,7 @@ class InputReader implements CommandMarker {
         }
 
         return new TableBuilder(
-                new BeanListTableModel(allCustomers, ["cnpj": "CNPJ", "razaoSocial": "Razão Social"]))
+                new BeanListTableModel(allCustomers, ["identificador": "Identificador", "cnpj": "CNPJ", "razaoSocial": "Razão Social"]))
                 .addHeaderAndVerticalsBorders(BorderStyle.fancy_heavy)
                 .addFullBorder(BorderStyle.fancy_double)
                 .addInnerBorder(BorderStyle.fancy_light)
