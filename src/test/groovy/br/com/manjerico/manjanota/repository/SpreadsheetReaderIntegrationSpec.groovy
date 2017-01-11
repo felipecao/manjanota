@@ -15,7 +15,7 @@ class SpreadsheetReaderIntegrationSpec extends Specification {
 
     def "readWorksheet returns empty array for empty spreadsheet"() {
         when:
-        def spreadsheetContents = reader.readWorksheet(CustomerRepositoryImpl.CUSTOMERS_WORKSHEET)
+        def spreadsheetContents = reader.readCustomersWorksheet()
 
         then:
         !spreadsheetContents
@@ -24,7 +24,7 @@ class SpreadsheetReaderIntegrationSpec extends Specification {
 
     def "readWorksheet returns array with one entry for spreadsheet with one line"() {
         when:
-        def spreadsheetContents = reader.readWorksheet(CustomerRepositoryImpl.CUSTOMERS_WORKSHEET)
+        def spreadsheetContents = reader.readCustomersWorksheet()
 
         then:
         [CustomerMother.EVENTOS_CIA] == spreadsheetContents
@@ -33,7 +33,7 @@ class SpreadsheetReaderIntegrationSpec extends Specification {
 
     def "readWorksheet returns array with two entries for spreadsheet with two lines"() {
         when:
-        def spreadsheetContents = reader.readWorksheet(CustomerRepositoryImpl.CUSTOMERS_WORKSHEET)
+        def spreadsheetContents = reader.readCustomersWorksheet()
 
         then:
         [CustomerMother.EVENTOS_CIA, CustomerMother.PETROBRAS] == spreadsheetContents

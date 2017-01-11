@@ -17,4 +17,6 @@ class Manjerico {
     String cidade
     String estado
     String cep
+    String telefone
+    String email
 }

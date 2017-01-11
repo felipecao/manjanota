@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component
 @Component
 class CustomerRepositoryImpl implements CustomerRepository {
 
-    static final String CUSTOMERS_WORKSHEET = "Clientes"
-
     static final Map SPREADSHEET_HEADERS = [
             identificador: "Identificador",
             razaoSocial: "Razão Social",
@@ -20,14 +18,15 @@ class CustomerRepositoryImpl implements CustomerRepository {
             cidade: "Cidade",
             estado: "Estado",
             cep: "CEP",
-            telefone: "Telefone"
+            telefone: "Telefone",
+            email: "E-mail"
     ]
 
     private Customers customers
 
     @Autowired
     CustomerRepositoryImpl(SpreadsheetReader spreadsheetReader) {
-        customers = new Customers(spreadsheetReader.readWorksheet(CUSTOMERS_WORKSHEET).collect {
+        customers = new Customers(spreadsheetReader.readCustomersWorksheet().collect {
             new Customer(
                     identificador: Double.valueOf(it[SPREADSHEET_HEADERS.identificador]).intValue(),
                     razaoSocial: it[SPREADSHEET_HEADERS.razaoSocial],

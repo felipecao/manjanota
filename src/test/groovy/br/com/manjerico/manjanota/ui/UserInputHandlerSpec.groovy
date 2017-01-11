@@ -3,6 +3,7 @@ package br.com.manjerico.manjanota.ui
 import br.com.manjerico.manjanota.domain.Customer
 import br.com.manjerico.manjanota.repository.CustomerMother
 import br.com.manjerico.manjanota.repository.CustomerRepository
+import br.com.manjerico.manjanota.repository.ManjericoRepository
 import br.com.manjerico.manjanota.service.InvoiceService
 import spock.lang.Specification
 

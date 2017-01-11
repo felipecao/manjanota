@@ -1,7 +1,9 @@
 package br.com.manjerico.manjanota.ui
 
 import br.com.manjerico.manjanota.domain.Customer
+import br.com.manjerico.manjanota.domain.Manjerico
 import br.com.manjerico.manjanota.repository.CustomerRepository
+import br.com.manjerico.manjanota.repository.ManjericoRepository
 import br.com.manjerico.manjanota.service.InvoiceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.shell.core.CommandMarker

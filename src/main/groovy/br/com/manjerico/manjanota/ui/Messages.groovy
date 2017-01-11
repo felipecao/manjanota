@@ -4,6 +4,7 @@ enum Messages {
 
     NO_CUSTOMERS("Não há clientes na base de dados"),
     NO_CUSTOMER_WITH_IDENTIFIER("Não existe cliente com identificador informado"),
+    NO_MANJERICO("Os dados da Manjerico não foram encontrados"),
     INVOICE_GENERATED("A nota fiscal foi preenchida, por favor confira os dados e confirme-a!"),
 
     private String text
