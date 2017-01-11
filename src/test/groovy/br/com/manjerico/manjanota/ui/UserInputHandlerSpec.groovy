@@ -1,7 +1,9 @@
 package br.com.manjerico.manjanota.ui
 
+import br.com.manjerico.manjanota.domain.Customer
 import br.com.manjerico.manjanota.repository.CustomerMother
 import br.com.manjerico.manjanota.repository.CustomerRepository
+import br.com.manjerico.manjanota.service.InvoiceService
 import spock.lang.Specification
 
 class UserInputHandlerSpec extends Specification {
@@ -10,11 +12,14 @@ class UserInputHandlerSpec extends Specification {
 
     private CustomerRepository customerRepository
 
+    private InvoiceService invoiceService
+
     String commandOutput
 
     def setup() {
         customerRepository = Mock()
-        inputReader = new UserInputHandler(customerRepository)
+        invoiceService = Mock()
+        inputReader = new UserInputHandler(customerRepository, invoiceService)
     }
 
     void "if there are no customers, nothing is presented"() {
@@ -37,6 +42,36 @@ class UserInputHandlerSpec extends Specification {
 
         then:
         UiOutputRows.tableWithEventosCiaAndPetrobras() == commandOutput
+    }
+
+    void "if customer does not exist, invoice is not generated"() {
+        given:
+        Integer identifier = 1
+
+        and:
+        customerRepository.findByIdentifier(identifier) >> null
+
+        when:
+        commandOutput = inputReader.generateInvoiceForCustomer(identifier)
+
+        then:
+        Messages.NO_CUSTOMER_WITH_IDENTIFIER.toString() == commandOutput
+        0 * invoiceService.generateInvoiceForCustomer(_ as Customer)
+    }
+
+    void "if customer exists, invoice is generated"() {
+        given:
+        Integer identifier = 1
+
+        and:
+        customerRepository.findByIdentifier(identifier) >> CustomerMother.eventosCia()
+
+        when:
+        commandOutput = inputReader.generateInvoiceForCustomer(identifier)
+
+        then:
+        Messages.INVOICE_GENERATED.toString() == commandOutput
+        1 * invoiceService.generateInvoiceForCustomer(CustomerMother.eventosCia())
     }
 
 }

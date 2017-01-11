@@ -12,6 +12,11 @@ class Customer {
     String cnpj
     String razaoSocial
     String endereco
+    Integer numero
+    String complemento
+    String bairro
     String cidade
     String estado
+    String cep
+    String telefone
 }
