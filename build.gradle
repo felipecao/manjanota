@@ -29,6 +29,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    mavenCentral()
     jcenter()
 }
 
@@ -36,6 +37,10 @@ dependencies {
     compile "org.codehaus.groovy:groovy-all:2.4.1"
     compile 'org.slf4j:slf4j-api:1.7.13'
     compile "org.springframework.shell:spring-shell:1.2.0.RELEASE"
+    compile group: 'org.apache.poi', name: 'poi', version: '3.12'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.12'
+    compile group: 'org.apache.poi', name: 'ooxml-schemas', version: '1.0'
 
     testCompile 'junit:junit:4.12'
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }

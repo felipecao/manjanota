@@ -3,6 +3,7 @@ build/
 .idea/
 *.log
 target/
+classes/
 
 # Ignore Gradle GUI config
 gradle-app.setting

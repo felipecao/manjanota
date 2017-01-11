@@ -1,4 +1,4 @@
-package br.com.manjerico.manjanota
+package br.com.manjerico.manjanota.ui
 
 import org.springframework.core.annotation.Order
 import org.springframework.shell.plugin.PromptProvider
