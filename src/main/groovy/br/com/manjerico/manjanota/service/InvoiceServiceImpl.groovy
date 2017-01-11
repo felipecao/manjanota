@@ -5,6 +5,7 @@ import br.com.manjerico.manjanota.domain.Manjerico
 import br.com.manjerico.manjanota.repository.ManjericoRepository
 import br.com.manjerico.manjanota.ui.Messages
 import geb.Browser
+import org.openqa.selenium.Keys
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -14,7 +15,7 @@ class InvoiceServiceImpl implements InvoiceService {
     private static final String MEI = "1"
     private static final String OPERACAO_INTERNA = "1"
 
-    public static final int DEFAULT_SLEEP_TIME_IN_MS = 1000
+    public static final int DEFAULT_SLEEP_TIME_IN_MS = 2000
 
     private ManjericoRepository manjericoRepository
 
@@ -39,18 +40,23 @@ class InvoiceServiceImpl implements InvoiceService {
             sleep(DEFAULT_SLEEP_TIME_IN_MS)
 
             $("#remetenteCNPJ").value(manjerico.cnpj)
+            $("#remetenteCNPJ") << Keys.TAB
             sleep(DEFAULT_SLEEP_TIME_IN_MS)
 
             $("#remetenteNomePessoa").value(manjerico.razaoSocial)
 
             $("#remetenteCEP").value(manjerico.cep)
+            $("#remetenteCEP") << Keys.TAB
             sleep(DEFAULT_SLEEP_TIME_IN_MS)
 
-            $("#remetenteEmail").value(manjerico.email)
             $("#remetenteNumero").value(manjerico.numero)
-            $("#remetenteConfirmarEmail").value(manjerico.email)
             $("#remetenteComplemento").value(manjerico.complemento)
             $("#remetenteTelefone").value(manjerico.telefone)
+            $("#remetenteEmail").value(manjerico.email)
+            $("#remetenteEmail") << Keys.TAB
+            $("#remetenteConfirmarEmail").value(manjerico.email)
+            $("#remetenteConfirmarEmail") << Keys.TAB
+            sleep(DEFAULT_SLEEP_TIME_IN_MS)
             $("#remetenteTipoOperacao").value(OPERACAO_INTERNA)
             sleep(DEFAULT_SLEEP_TIME_IN_MS)
 
