@@ -4,9 +4,9 @@ import br.com.manjerico.manjanota.repository.CustomerMother
 import br.com.manjerico.manjanota.repository.CustomerRepository
 import spock.lang.Specification
 
-class InputReaderSpec extends Specification {
+class UserInputHandlerSpec extends Specification {
 
-    private InputReader inputReader
+    private UserInputHandler inputReader
 
     private CustomerRepository customerRepository
 
@@ -14,7 +14,7 @@ class InputReaderSpec extends Specification {
 
     def setup() {
         customerRepository = Mock()
-        inputReader = new InputReader(customerRepository)
+        inputReader = new UserInputHandler(customerRepository)
     }
 
     void "if there are no customers, nothing is presented"() {

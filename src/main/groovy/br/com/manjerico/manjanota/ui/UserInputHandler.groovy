@@ -8,12 +8,12 @@ import org.springframework.shell.core.annotation.CliCommand
 import org.springframework.stereotype.Component
 
 @Component
-class InputReader implements CommandMarker {
+class UserInputHandler implements CommandMarker {
 
     private CustomerRepository customerRepository
 
     @Autowired
-    InputReader(CustomerRepository customerRepository) {
+    UserInputHandler(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository
     }
 
